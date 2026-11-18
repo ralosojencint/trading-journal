@@ -1,0 +1,8 @@
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// Dev: run `npm run start` (API on 5000) and `npm run dev` (UI on 5173, proxies /api).
+export default defineConfig({
+  plugins: [react()],
+  server: { host: '0.0.0.0', port: 5173, allowedHosts: true, proxy: { '/api': 'http://localhost:5000' } },
+})
